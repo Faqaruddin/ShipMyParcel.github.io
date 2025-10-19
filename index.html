@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ship My Parcel - Local Shipping Hub</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <script src="script.js" defer></script>
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "lpkyl-d6MFd9J2cej",
+      });
+   })();
+</script>
+</head>
+<body class="dynamic-bg text-gray-800 flex flex-col">
+
+  <header class="flex-shrink-0 sticky top-0 z-10 bg-white/90 backdrop-blur-sm shadow-md rounded-b-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <img src="Ship My Parcel logo.svg" alt="Ship My Parcel Logo" 
+           class="h-10 w-auto object-contain"
+           onerror="this.onerror=null; this.src='https://placehold.co/160x40?text=Logo'">
+      <nav class="space-x-4 hidden md:block" id="main-nav">
+        <a href="#home" id="nav-home" class="nav-link text-gray-700 hover:text-yellow-600 hover:border-b-3 hover:border-yellow-600 py-1 font-medium transition duration-150">Home</a>
+        <a href="#services" id="nav-services" class="nav-link text-gray-700 hover:text-yellow-600 hover:border-b-3 hover:border-yellow-600 py-1 font-medium transition duration-150">Services</a>
+        <a href="#contact" id="nav-contact" class="nav-link text-gray-700 hover:text-yellow-600 hover:border-b-3 hover:border-yellow-600 py-1 font-medium transition duration-150">Contact Us</a>
+      </nav>
+      <button class="md:hidden p-2 rounded-lg text-gray-700 hover:bg-yellow-100"
+              onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2">
+      <a href="#home" class="nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-yellow-50"
+         onclick="document.getElementById('mobile-menu').classList.add('hidden')">Home</a>
+      <a href="#services" class="nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-yellow-50"
+         onclick="document.getElementById('mobile-menu').classList.add('hidden')">Services</a>
+      <a href="#contact" class="nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-yellow-50"
+         onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact Us</a>
+    </div>
+  </header>
+
+  <div class="page-container flex-grow">
+    <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
+
+      <section id="home" class="page-section hidden bg-yellow-100 rounded-2xl shadow-inner"> 
+        <h1 class="sr-only">Home - Ship My Parcel</h1>
+        <div class="grid md:grid-cols-2 gap-10 items-center bg-yellow-50 p-8 rounded-2xl shadow-xl">
+          <div>
+            <h2 class="text-5xl sm:text-6xl font-extrabold leading-tight mb-4 text-gray-900 bg-yellow-100 p-2 rounded-xl shadow-md">
+              Welcome to <span class="text-yellow-600">Ship My Parcel</span>
+            </h2>
+            <p class="text-xl text-gray-600 mb-6">
+              Your local shipping hub where convenience meets choice! We make shipping simple, reliable, and flexible.
+            </p>
+            <ul class="list-none space-y-3 mb-8">
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-yellow-500 mr-2 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                <span class="text-lg font-medium">Affordable shipping rates in town.</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-yellow-500 mr-2 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="lucide lucide-package"><path d="m7.5 4.27 9 5.15"/><path d="M12 22V4"/><path d="m20.25 9.15-9-5.15-9 5.15 9 5.15 9-5.15Z"/><path d="M3.75 14.32 12 18.5l8.25-4.18"/><path d="M3.75 19.46 12 23.64l8.25-4.18"/></svg>
+                <span class="text-lg font-medium">Packaging supplies and business services.</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-yellow-500 mr-2 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="lucide lucide-map-pin"><path d="M20 10c0 6-8 8-8 8s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span class="text-lg font-medium">All under one roof, right in your neighbourhood.</span>
+              </li>
+            </ul>
+            <a href="#services" class="nav-link inline-block px-8 py-3 bg-yellow-600 text-white font-semibold rounded-full shadow-lg hover:bg-yellow-700 transition duration-300 transform hover:scale-105">
+              Explore Services
+            </a>
+          </div>
+          <div class="hidden md:block">
+            <img src="Ship My Parcel logo.svg" 
+                 alt="A welcoming storefront for Ship My Parcel" 
+                 class="w-full h-auto rounded-xl shadow-2xl object-cover"
+                 onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Shipping+Hub'">
+          </div>
+        </div>
+        <div class="mt-8 bg-yellow-50 p-6 rounded-2xl shadow-lg">
+          <h3 class="text-center text-xl font-bold mb-6 text-gray-800">Trusted Carriers. Unbeatable Choice.</h3>
+          <div class="grid grid-cols-4 sm:grid-cols-8 gap-4 lg:gap-6 justify-items-center">
+            <img src="purolator.jpg"Purolator Logo" class="w-full h-8 object-contain opacity-80 hover:opacity-100 transition duration-300" />
+            <img src="dhl.jpg" alt="DHL Logo" class="w-full h-8 object-contain opacity-80 hover:opacity-100 transition duration-300" />
+            <img src="fedex.jpg" alt="FedEx Logo" class="w-full h-8 object-contain opacity-80 hover:opacity-100 transition duration-300" />
+            <img src="ups.jpg" alt="UPS Logo" class="w-full h-8 object-contain opacity-80 hover:opacity-100 transition duration-300" />
+            <img src="canada-post.jpg" alt="Canada Post Logo" class="w-full h-8 object-contain opacity-80 hover:opacity-100 transition duration-300" />
+            <img src="amazon.jpg" alt="Amazon Logo" class="w-full h-8 object-contain opacity-80 hover:opacity-100 transition duration-300" />
+            <img src="Loomis.jpg" alt="Loomis Express Logo" class="w-full h-8 object-contain opacity-80 hover:opacity-100 transition duration-300" />
+            <img src="canpar.jpg" alt="Canpar Logo" class="w-full h-8 object-contain opacity-80 hover:opacity-100 transition duration-300" />
+          </div>
+          <p class="text-center mt-6 text-lg font-medium text-green-700">We also accept drop-offs for all major carriers!</p>
+        </div>
+      </section>
+
+      <section id="services" class="page-section hidden">
+        <h2 class="text-4xl font-bold text-center mb-10 text-gray-900 bg-yellow-100 p-2 rounded-xl shadow-lg border-b-4 border-yellow-600">
+          Our Comprehensive Services
+        </h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <div class="content-card service-card-minimized p-4 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border-t-4 border-yellow-500 relative **h-80**"
+               data-title="Shipping Services"
+               data-details='<p class="text-gray-800 text-base mb-3">At Ship My Parcel, choice and convenience come together for documents, parcels, and business shipments via top carriers.</p><p class="text-gray-800 font-semibold text-base mb-2">We offer:</p><ul class="list-disc list-inside text-gray-800 text-sm space-y-1 ml-4 text-left"><li>Domestic & International Shipping</li><li>Express & Standard Delivery Options</li><li>Tracking and Insurance Services</li><li>Custom Packaging Solutions</li></ul><p class="text-gray-800 text-base mt-3 font-medium">Ship smarter and save with reliable, cost‑effective options.</p>'>
+            <img src="shipping services.svg" alt="Packages prepared for courier shipping"
+                 class="w-full h-28 rounded-xl object-cover mb-2" loading="lazy" decoding="async" />
+            <h3 class="text-xl font-semibold text-center mb-0 text-gray-900">Shipping Services</h3>
+          </div>
+
+          <div class="content-card service-card-minimized p-4 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border-t-4 border-yellow-500 relative **h-80**"
+               data-title="Moving & Storage Services"
+               data-details='<p class="text-gray-800 text-base mb-3">Relocate home or office locally, nationally, or internationally with smooth handling from end to end.</p><p class="text-gray-800 font-semibold text-base mb-2">We offer:</p><ul class="list-disc list-inside text-gray-800 text-sm space-y-1 ml-4 text-left"><li>Local, National & International Relocations</li><li>Professional Packing & Unpacking Services</li><li>Short‑Term & Long‑Term Storage</li><li>Residential & Commercial Solutions</li><li>Reliable Logistics & On‑Time Delivery</li></ul><p class="text-gray-800 text-base mt-3 font-medium">Trusted teams and secure handling keep moves simpler and safer.</p>'>
+            <img src="Moving And Storage Services.svg" alt="Stacked moving boxes in a bright room"
+                 class="w-full h-28 rounded-xl object-cover mb-2" loading="lazy" decoding="async" />
+            <h3 class="text-xl font-semibold text-center mb-0 text-gray-900">Moving & Storage Services</h3>
+          </div>
+
+          <div class="content-card service-card-minimized p-4 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border-t-4 border-yellow-500 relative **h-80**"
+               data-title="Fulfilment (Pick and Pack)"
+               data-details='<p class="text-gray-800 text-base mb-3">Receiving, storing, sorting, picking, packing, and shipping with accuracy for single items or high‑volume orders.</p><p class="text-gray-800 text-base font-medium">Courier rates are compared to secure the best deal while logistics run end‑to‑end.</p>'>
+            <img src="Fullfilment (Pick And Pack).svg" alt="Worker sealing a carton in a fulfillment area"
+                 class="w-full h-28 rounded-xl object-cover mb-2" loading="lazy" decoding="async" />
+            <h3 class="text-xl font-semibold text-center mb-0 text-gray-900">Fulfilment (Pick and Pack)</h3>
+          </div>
+
+          <div class="content-card service-card-minimized p-4 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border-t-4 border-yellow-500 relative **h-80**"
+               data-title="Custom Packing"
+               data-details='<p class="text-gray-800 text-base mb-3">Expert packing with quality materials like boxes, bubble wrap, peanuts, strapping, and custom crating.</p><p class="text-gray-800 text-base font-medium">Prepared with protection in mind so items arrive safe and on time.</p>'>
+            <img src="Custom Packing.svg" alt="Hands wrapping an item with bubble wrap in a box"
+                 class="w-full h-28 rounded-xl object-cover mb-2" loading="lazy" decoding="async" />
+            <h3 class="text-xl font-semibold text-center mb-0 text-gray-900">Custom Packing</h3>
+          </div>
+          
+          <div class="content-card service-card-minimized p-4 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border-t-4 border-yellow-500 relative **h-80**"
+               data-title="Secure Mailbox Services"
+               data-details='<p class="text-gray-800 text-base mb-3">Private, secure mailbox rentals keep mail safe and professional with notifications on arrival.</p><p class="text-gray-800 font-semibold text-base mb-2">A rented mailbox helps to:</p><ul class="list-disc list-inside text-gray-800 text-sm space-y-1 ml-4 text-left"><li>Protect important documents</li><li>Separate personal and business mail</li><li>Maintain a professional address</li><li>Avoid missed deliveries</li><li>Enjoy secure storage and confidentiality</li></ul>'>
+            <img src="Secure Mailbox Service.svg" alt="Secure indoor mailboxes with numbered doors"
+                 class="w-full h-28 rounded-xl object-cover mb-2" loading="lazy" decoding="async" />
+            <h3 class="text-xl font-semibold text-center mb-0 text-gray-900">Secure Mailbox Services</h3>
+          </div>
+
+          <div class="content-card service-card-minimized p-4 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border-t-4 border-yellow-500 relative **h-80**"
+               data-title="Printing & Document Services"
+               data-details='<p class="text-gray-800 text-base mb-3">Instant printing for photocopies, colour prints, and scanning with quick, hassle‑free service.</p><p class="text-gray-800 font-semibold text-base mb-2">Our services include:</p><ul class="list-disc list-inside text-gray-800 text-sm space-y-1 ml-4 text-left"><li>Black & white and colour printing</li><li>Photocopying</li><li>Document scanning & emailing</li><li>Printing from USB or email</li></ul>'>
+            <img src="Printing & Document Services.svg" alt="Hands placing a document on a copier scanner"
+                 class="w-full h-28 rounded-xl object-cover mb-2" loading="lazy" decoding="async" />
+            <h3 class="text-xl font-semibold text-center mb-0 text-gray-900">Printing & Document Services</h3>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="contact" class="hidden min-h-screen flex flex-col justify-center items-center p-6 fade-in bg-gradient-to-br from-amber-50 to-yellow-100">
+        <h2 class="text-4xl font-bold text-center mb-10 text-gray-900 bg-yellow-100 p-2 rounded-xl shadow-lg border-b-4 border-yellow-600">
+          Have questions or need a quick shipping quote ?
+        </h2>
+        
+        <div class="grid lg:grid-cols-2 gap-10 content-card p-8 rounded-2xl shadow-xl">
+          <div class="space-y-6">
+            <p class="text-xl text-gray-600"> We're here to help! </p>
+           <p class="text-xl text-gray-600">Whether you're shipping a package, printing documents, or renting a mailbox, our team at Ship My Parcel is ready to assist you with fast, friendly service and the best rates from trusted couriers. We make it easy. Just contact us with the weight, dimensions, and destination postal code of your shipment, and we’ll find you the best shipping solution across trusted carriers like Purolator, DHL, FedEx and UPS. We compare rates so you don’t to—saving you time and money.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-center space-x-3">
+                <svg class="w-6 h-6 text-yellow-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-3.67-5.56A19.5 19.5 0 0 1 2 5.92V3a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.9 1.5l1.62 5.58a2 2 0 0 1-.5 2.15L7.75 14 10.3 16.55l3.24-3.24a2 2 0 0 1 2.15-.5l5.58 1.62a2 2 0 0 1 1.5 1.9Z"/></svg>
+                <span class="text-lg font-medium">Call us at: <a href="tel:2266910101" class="text-yellow-600 hover:underline">+1 226-691-0101</a></span>
+              </div>
+              
+              <div class="flex items-center space-x-3">
+                <svg class="w-6 h-6 text-yellow-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle">
+                    <path d="M7.9 20A10 10 0 1 0 5 15l-3 3 3-3"/>
+                </svg>
+                <span class="text-lg font-medium">WhatsApp Chat: <a href="https://wa.me/12266910101" target="_blank" class="text-yellow-600 hover:underline">Start Chat</a></span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <svg class="w-6 h-6 text-yellow-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span class="text-lg font-medium">Email: <a href="mailto:shipmyp@gmail.com" class="text-yellow-600 hover:underline">shipmyp@gmail.com</a></span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <svg class="w-6 h-6 text-yellow-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="lucide lucide-store">
+                     <path d="m2 7 4.41-4.41A2 2 0 0 1 7.42 2h9.16a2 2 0 0 1 1.41.59L22 7"/>
+                     <path d="M4 10v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10"/>
+                     <path d="M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4"/>
+                </svg>
+                <span class="text-lg font-medium">Visit us in-store: <a href="https://maps.app.goo.gl/npr748c88bFb474f6" target="_blank" class="text-yellow-600 hover:underline">View Map Location</a></span>
+              </div>
+            </div>
+   
+            <p class="text-xl font-semibold text-green-700">
+                Fast quotes. Affordable rates. Reliable service.
+                <br>
+                Contact us Form with all the queries being routed to the email.
+            </p>
+            <div class="flex space-x-4 pt-6">
+              <a href="https://www.facebook.com/share/1F..." target="_blank" class="text-gray-500 hover:text-yellow-600 transition duration-150">
+                <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href="https://wa.me/12266910101" target="_blank" class="text-gray-500 hover:text-yellow-600 transition duration-150">
+                <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle">
+                    <path d="M7.9 20A10 10 0 1 0 5 15l-3 3 3-3"/>
+                </svg>
+              </a>
+              <a href="#" target="_blank" class="text-gray-500 hover:text-yellow-600 transition duration-150">
+                <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="lucide lucude-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              </a>
+            </div>
+          </div>
+
+          
+                    <div class="mt-8 lg:mt-0">
+                      <form>
+                        <!--<form action="https://mail.google.com/mail/?view=cm&fs=1&to=shipmyp@gmail.com" method="get" target="_blank" onsubmit="prefillEmail(event)" class="space-y-6 p-6 bg-yellow-50 rounded-xl shadow-lg" >-->
+                            <h3 class="text-2xl font-bold text-gray-900 bg-yellow-100 p-3 rounded-lg shadow-md border-b-4 border-yellow-600 text-center mb-6">Get an Estimate</h3>
+                            
+                            <p class="text-gray-700 mb-4 text-sm">Fill out the estimate request below. When you click 'Send,' a new tab will open in **Gmail** with the recipient email pre-filled and your message drafted.</p>
+
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700"><b>Name</b></label>
+                                <input type="text" id="name" name="Name" required placeholder="Your Name" 
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 placeholder:text-gray-400 placeholder:font-medium placeholder:bg-transparent">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700"><b>Email*</b></label>
+                                <input type="email" id="email" name="Email" required placeholder="name@example.com"
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 placeholder:text-gray-400 placeholder:font-medium placeholder:bg-transparent">
+                            </div>
+
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700"><b>What services can we help you with?</b></label>
+                                <textarea id="service" name="Service Query" rows="4" required placeholder="E.g., I need a quote for a 5lb package to Toronto (L4G 1H1) measuring 12x10x8 inches. Also need 50 black & white copies." 
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 placeholder:text-gray-400 placeholder:font-medium placeholder:bg-transparent"></textarea>
+                            </div>
+                            <!--
+                            <div>
+                                <label for="attachments" class="block text-sm font-medium text-gray-700"><b>Attach Files </b> (for printing, etc.)</label>
+                                <input type="file" id="attachments" name="Attachments" multiple class="mt-1 block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 
+                                    file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold 
+                                    file:bg-yellow-500 file:text-white hover:file:bg-yellow-600 transition duration-200"
+                                    onchange="document.getElementById('file-warning-box').classList.remove('hidden')">
+                                <p id="file-warning-box" class="mt-2 text-xs text-red-600 hidden">
+                                    ⚠️ **IMPORTANT:** You must manually attach these files once the Gmail window opens, as this form cannot transfer them.
+                                </p>
+                            </div>
+                          -->
+                            <button type="submit" onclick="sendMail(event)" class="w-full py-3 bg-yellow-600 text-white font-semibold rounded-full shadow-lg hover:bg-yellow-700 transition duration-300 transform hover:scale-[1.01]">
+                                Send Estimate Request
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+    </div>
+    
+    <div id="service-popup" class="service-popup-fixed hidden">
+        <div id="popup-content-title" class="text-2xl font-bold mb-3 text-gray-900 text-center"></div>
+        <div id="popup-content-details" class="text-center"></div>
+    </div>
+    
+  </div>
+  
+  <footer class="flex-shrink-0 bg-gray-800 text-white relative overflow-hidden h-12">
+    <div class="animated-truck-container">
+      <span class="animated-truck">🚚_Ship My Parcel_🚚 </span>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 text-center relative z-10"></div>
+  </footer>
+
+  <footer class="flex-shrink-0 bg-gray-900 text-white text-center py-2 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      © 2025 Ship My Parcel. All rights reserved.
+    </div>
+  </footer>
+
+<button id="scrollTopBtn" 
+  class="fixed bottom-6 right-6 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-3 rounded-full shadow-lg hidden z-50">
+  ↑
+</button>
+</body>
+</html>

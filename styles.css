@@ -1,0 +1,121 @@
+/* Define a custom, soft, light-yellow gradient for the dynamic effect */
+@keyframes subtleGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.dynamic-bg {
+  background: linear-gradient(135deg, rgba(255, 255, 230, 0.7), rgba(255, 255, 200, 0.6));
+  background-size: 400% 400%;
+  animation: subtleGradient 20s ease infinite;
+  font-family: 'Outfit', sans-serif; /* Applied Outfit font */
+}
+
+/* Card background to ensure readability over the dynamic background */
+.content-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+}
+
+/* --- New Fixed Pop-up Styles (Dynamic Positioning/Tooltip) --- */
+.service-popup-fixed {
+    /* Fixed position relative to the viewport, allowing JS to set coordinates */
+    position: fixed;
+    /* TOP, LEFT, and TRANSFORM are set by JS to center on the hovered card */
+    
+    /* Styling */
+    width: 90%;
+    max-width: 450px; 
+    padding: 2rem;
+    background-color: rgba(255, 255, 200, 0.95); /* Light yellow, near-opaque */
+    border: 4px solid #f59e0b; /* Yellow border */
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 50; /* High z-index to float over everything */
+
+    /* Animation */
+    /* Ensures the position and fade transition smoothly */
+    transition: opacity 0.3s ease, transform 0.3s ease, top 0.3s ease, left 0.3s ease;
+    opacity: 0;
+    /* Initial state ensures a clean start before JS positions it */
+    top: -9999px; 
+    left: -9999px; 
+}
+
+/* State when the pop-up is active (controlled by JS) */
+.service-popup-fixed.active {
+    opacity: 1;
+}
+
+
+
+/* --- Responsive Fullscreen & Scrollable Layout --- */
+html, body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;        /* Prevent horizontal scroll */
+  overflow-y: auto;          /* Allow full-page scrolling */
+  scroll-behavior: smooth;   /* Smooth scrolling effect */
+}
+
+/* Let content grow naturally with screen height */
+.page-container {
+  min-height: calc(100vh - 150px); /* Adjusted for header/footer */
+  overflow: visible;
+  padding-bottom: 2rem;
+}
+
+/* Sections should size based on content, not force full height */
+.page-section {
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: visible;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Make images and grids responsive */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent large sections from overflowing horizontally */
+section {
+  overflow-x: hidden;
+}
+
+
+/* --- Truck Animation Styles --- */
+@keyframes truck-slide {
+  0% { transform: translateX(100vw) translateY(-50%); } /* Start off-screen right */
+  100% { transform: translateX(-100vw) translateY(-50%); } /* End off-screen left */
+}
+
+.animated-truck-container {
+  position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; pointer-events: none;
+}
+
+.animated-truck {
+  font-size: 2.2rem; position: absolute; right: 0; top: 50%;
+  color: #fcd34d; text-shadow: 0 0 5px rgba(0,0,0,0.5); animation: truck-slide 15s linear infinite; white-space: nowrap;
+}
+
+/* --- Custom Active Navigation Styles --- */
+/* Desktop Active Link: Yellow Border and Text */
+#main-nav .nav-link.active {
+    color: #d97706; /* yellow-600 */
+    border-bottom-width: 3px;
+    border-bottom-color: #d97706;
+}
+
+/* Mobile Active Link: Yellow Background */
+#mobile-menu a.nav-link.active {
+    background-color: #fef3c7; /* yellow-100 */
+    font-weight: 600;
+    color: #92400e; /* yellow-800 */
+}
