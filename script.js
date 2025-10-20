@@ -10,6 +10,7 @@
     name: document.getElementById("name").value,
     email: document.getElementById("email").value,
     service: document.getElementById("service").value,
+    whatapp: document.getElementById("whatapp").value,
   };
 
   emailjs.send("service_wy4z2as", "template_0z1c9br", parms)
