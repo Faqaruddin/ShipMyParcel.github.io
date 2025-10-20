@@ -214,14 +214,15 @@
                 <span class="text-lg font-medium">Visit us in-store: <a href="https://maps.app.goo.gl/npr748c88bFb474f6" target="_blank" class="text-yellow-600 hover:underline">View Map Location</a></span>
               </div>
             </div>
-   
+            <!---
             <p class="text-xl font-semibold text-green-700">
                 Fast quotes. Affordable rates. Reliable service.
                 <br>
                 Contact us Form with all the queries being routed to the email.
             </p>
+            -->
             <div class="flex space-x-4 pt-6">
-              <a href="https://www.facebook.com/share/1F..." target="_blank" class="text-gray-500 hover:text-yellow-600 transition duration-150">
+              <a href="https://www.facebook.com/share/1BoDZARGr6/?mibextid=wwXIfr" target="_blank" class="text-gray-500 hover:text-yellow-600 transition duration-150">
                 <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                      class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -231,7 +232,7 @@
                     <path d="M7.9 20A10 10 0 1 0 5 15l-3 3 3-3"/>
                 </svg>
               </a>
-              <a href="#" target="_blank" class="text-gray-500 hover:text-yellow-600 transition duration-150">
+              <a href="https://www.instagram.com/ship_my_parcel?igsh=MTk3NDBxNjUxa291Nw==" target="_blank" class="text-gray-500 hover:text-yellow-600 transition duration-150">
                 <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                      class="lucide lucude-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
@@ -241,16 +242,16 @@
 
           
                     <div class="mt-8 lg:mt-0">
-                      <form>
+                      <form target="_blank" onsubmit="sendMail(event)" class="space-y-6 p-6 bg-yellow-50 rounded-xl shadow-lg" >
                         <!--<form action="https://mail.google.com/mail/?view=cm&fs=1&to=shipmyp@gmail.com" method="get" target="_blank" onsubmit="prefillEmail(event)" class="space-y-6 p-6 bg-yellow-50 rounded-xl shadow-lg" >-->
                             <h3 class="text-2xl font-bold text-gray-900 bg-yellow-100 p-3 rounded-lg shadow-md border-b-4 border-yellow-600 text-center mb-6">Get an Estimate</h3>
                             
-                            <p class="text-gray-700 mb-4 text-sm">Fill out the estimate request below. When you click 'Send,' a new tab will open in **Gmail** with the recipient email pre-filled and your message drafted.</p>
+                           <!--- <p class="text-gray-700 mb-4 text-sm">Fill out the estimate request below. When you click 'Send,' a new tab will open in **Gmail** with the recipient email pre-filled and your message drafted.</p> -->
 
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700"><b>Name</b></label>
                                 <input type="text" id="name" name="Name" required placeholder="Your Name" 
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 placeholder:text-gray-400 placeholder:font-medium placeholder:bg-transparent">
+                                 class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 placeholder:text-gray-400 placeholder:font-medium placeholder:bg-transparent">
                             </div>
                             
                             <div>
@@ -258,12 +259,20 @@
                                 <input type="email" id="email" name="Email" required placeholder="name@example.com"
                                 class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 placeholder:text-gray-400 placeholder:font-medium placeholder:bg-transparent">
                             </div>
+                            
+                            <div>
+                                <label for="whatapp" class="block text-sm font-medium text-gray-700"><b>Whatapp*</b></label>
+                                <input type="whatapp" id="whatapp" name="whatapp" required placeholder=" +1  1234567890 "
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 placeholder:text-gray-400 placeholder:font-medium placeholder:bg-transparent" >
+                            </div>  
 
                             <div>
                                 <label for="service" class="block text-sm font-medium text-gray-700"><b>What services can we help you with?</b></label>
-                                <textarea id="service" name="Service Query" rows="4" required placeholder="E.g., I need a quote for a 5lb package to Toronto (L4G 1H1) measuring 12x10x8 inches. Also need 50 black & white copies." 
+                                <textarea id="service" name="Service Query" rows="4" 
                                 class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 placeholder:text-gray-400 placeholder:font-medium placeholder:bg-transparent"></textarea>
                             </div>
+
+                          <br> </br>
                             <!--
                             <div>
                                 <label for="attachments" class="block text-sm font-medium text-gray-700"><b>Attach Files </b> (for printing, etc.)</label>
@@ -276,7 +285,7 @@
                                 </p>
                             </div>
                           -->
-                            <button type="submit" onclick="sendMail(event)" class="w-full py-3 bg-yellow-600 text-white font-semibold rounded-full shadow-lg hover:bg-yellow-700 transition duration-300 transform hover:scale-[1.01]">
+                            <button type="submit"  class="w-full py-3 bg-yellow-600 text-white font-semibold rounded-full shadow-lg hover:bg-yellow-700 transition duration-300 transform hover:scale-[1.01]">
                                 Send Estimate Request
                             </button>
                         </form>
