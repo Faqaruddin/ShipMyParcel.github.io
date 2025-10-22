@@ -175,12 +175,27 @@ window.onload = function () {
       }
     });
   });
-  
+  /*
   // 4. Attach mouse listeners to Service Cards for pop-up
   document.querySelectorAll('.service-card-minimized').forEach(card => {
     card.addEventListener('mouseenter', () => showPopup(card));
     card.addEventListener('mouseleave', hidePopup);
   });
+*/
+
+// --- Click-to-Open Popup Logic ---
+document.querySelectorAll('.service-card-minimized').forEach(card => {
+  card.addEventListener('click', () => showPopup(card));
+});
+
+// --- Close Button Logic ---
+const popupCloseBtn = document.getElementById('popup-close-btn');
+if (popupCloseBtn) {
+  popupCloseBtn.addEventListener('click', () => {
+    popup.classList.remove('active');
+    setTimeout(() => popup.classList.add('hidden'), 300);
+  });
+}
 
   // 5. Allow interaction with the popup itself (preventing hide when mousing over it)
   popup.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
@@ -194,3 +209,72 @@ window.addEventListener('scroll', () => {
   else scrollBtn.classList.add('hidden');
 });
 scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// --- Rate Calculator Logic ---
+const couriers = [
+  { name: "UPS", base: 50, perKm: 0.3, perKg: 8 },
+  { name: "Purolator", base: 45, perKm: 0.35, perKg: 7.5 },
+  { name: "FedEx", base: 55, perKm: 0.25, perKg: 8.5 },
+  { name: "DHL", base: 60, perKm: 0.2, perKg: 9 },
+  { name: "Amazon", base: 40, perKm: 0.4, perKg: 7 },
+];
+
+// Simulated distance using PIN difference (placeholder for future API)
+function getDistanceKm(pickup, delivery) {
+  const a = parseInt(pickup.replace(/\D/g, "")) || 1000;
+  const b = parseInt(delivery.replace(/\D/g, "")) || 2000;
+  const diff = Math.abs(a - b);
+  return Math.max(10, Math.min(1500, diff / 10_000));
+}
+
+// Calculate rates
+function calculateRates() {
+  const pickup = document.getElementById("pickupPin").value.trim();
+  const delivery = document.getElementById("deliveryPin").value.trim();
+  const weight = parseFloat(document.getElementById("weight").value.trim());
+
+  if (!pickup || !delivery || !weight || weight <= 0) {
+    alert("Please enter valid PIN codes and weight.");
+    return;
+  }
+
+  const distance = getDistanceKm(pickup, delivery);
+  const tableBody = document.getElementById("rateTable");
+  tableBody.innerHTML = "";
+
+  couriers.forEach(courier => {
+    const cost = courier.base + courier.perKm * distance + courier.perKg * weight;
+    const row = `<tr>
+      <td class="py-2 px-2 font-medium">${courier.name}</td>
+      <td class="py-2 px-2">${cost.toFixed(2)}</td>
+    </tr>`;
+    tableBody.insertAdjacentHTML("beforeend", row);
+  });
+
+  document.getElementById("calcResults").classList.remove("hidden");
+}
+
+// Event
+document.getElementById("calcBtn").addEventListener("click", calculateRates);
+
+
+/*
+document.querySelectorAll(".service-card-minimized").forEach(card => {
+  card.addEventListener("mouseenter", e => {
+    popupTitle.textContent = card.dataset.title;
+    popupDetails.textContent = card.dataset.details;
+
+    const rect = card.getBoundingClientRect();
+    popup.style.left = `${rect.left + rect.width / 2}px`;
+    popup.style.top = `${rect.top + window.scrollY + rect.height / 2}px`;
+    popup.classList.add("active");
+  });
+
+  card.addEventListener("mouseleave", () => {
+    setTimeout(() => popup.classList.remove("active"), 100);
+  });
+});
+
+popupCloseBtn.addEventListener("click", () => popup.classList.remove("active"));
+
+*/
