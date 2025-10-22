@@ -30,9 +30,11 @@
 
   <header class="flex-shrink-0 sticky top-0 z-10 bg-white/90 backdrop-blur-sm shadow-md rounded-b-xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+       <a href="#home" class="h-10">
       <img src="Ship My Parcel logo.svg" alt="Ship My Parcel Logo" 
            class="h-10 w-auto object-contain"
            onerror="this.onerror=null; this.src='https://placehold.co/160x40?text=Logo'">
+        </a>
       <nav class="space-x-4 hidden md:block" id="main-nav">
         <a href="#home" id="nav-home" class="nav-link text-gray-700 hover:text-yellow-600 hover:border-b-3 hover:border-yellow-600 py-1 font-medium transition duration-150">Home</a>
         <a href="#services" id="nav-services" class="nav-link text-gray-700 hover:text-yellow-600 hover:border-b-3 hover:border-yellow-600 py-1 font-medium transition duration-150">Services</a>
@@ -92,12 +94,43 @@
               Explore Services
             </a>
           </div>
+          <!-- Calculator Section (replaces image) -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-yellow-500">
+        <h3 class="text-center text-xl font-bold mb-4 text-gray-800">Shipping Rate Calculator</h3>
+        <form id="rateCalcForm" class="space-y-4">
+          <input id="pickupPin" type="text" placeholder="Pickup Area PIN Code"
+                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" required />
+          <input id="deliveryPin" type="text" placeholder="Delivery Area PIN Code"
+                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" required />
+          <input id="weight" type="number" placeholder="Actual Weight (kg)"
+                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" required />
+          <button id="calcBtn" type="button"
+                  class="w-full py-2 bg-yellow-600 text-white font-semibold rounded-lg hover:bg-yellow-700 transition">
+            Calculate Estimate
+          </button>
+        </form>
+
+        <div id="calcResults" class="mt-6 hidden">
+          <h4 class="text-lg font-semibold mb-2 text-center text-gray-800">Estimated Rates (CAD)</h4>
+          <table class="w-full text-left border-t border-gray-300 text-sm">
+            <thead>
+              <tr class="border-b bg-yellow-100 text-gray-800">
+                <th class="py-2 px-2">Courier</th>
+                <th class="py-2 px-2">Estimated Cost</th>
+              </tr>
+            </thead>
+            <tbody id="rateTable"></tbody>
+          </table>
+        </div>
+      </div>
+      <!---
           <div class="hidden md:block">
             <img src="Ship My Parcel logo.svg" 
                  alt="A welcoming storefront for Ship My Parcel" 
                  class="w-full h-auto rounded-xl shadow-2xl object-cover"
                  onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Shipping+Hub'">
           </div>
+        -->
         </div>
         <div class="mt-8 bg-yellow-50 p-6 rounded-2xl shadow-lg">
           <h3 class="text-center text-xl font-bold mb-6 text-gray-800">Trusted Carriers. Unbeatable Choice.</h3>
@@ -111,7 +144,7 @@
             <img src="Loomis.jpg" alt="Loomis Express Logo" class="w-full h-8 object-contain opacity-80 hover:opacity-100 transition duration-300" />
             <img src="canpar.jpg" alt="Canpar Logo" class="w-full h-8 object-contain opacity-80 hover:opacity-100 transition duration-300" />
           </div>
-          <p class="text-center mt-6 text-lg font-medium text-green-700">We also accept drop-offs for all major carriers!</p>
+          <p class="text-center mt-6 text-lg font-medium text-green-700">We also accept drop-off's for all major carriers!</p>
         </div>
       </section>
 
@@ -170,6 +203,13 @@
             <h3 class="text-xl font-semibold text-center mb-0 text-gray-900">Printing & Document Services</h3>
           </div>
 
+            <div class="content-card service-card-minimized p-4 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border-t-4 border-yellow-500 relative **h-80**"
+               data-title="Photography"
+               data-details='<p class="text-gray-800 text-base mb-3">Passport and IRCC Photo Services. Photography for passport-size photos and IRCC requirements is available <strong>by appointment only</strong>.</p><p class="text-gray-800 text-base mb-3">Please contact us in advance to schedule your session.</p>'>
+            <img src="Photography.jpg" alt="Hands placing a document on a copier scanner"
+                 class="w-full h-28 rounded-xl object-cover mb-2" loading="lazy" decoding="async" />
+            <h3 class="text-xl font-semibold text-center mb-0 text-gray-900">Photography</h3>
+          </div>
         </div>
       </section>
 
@@ -294,12 +334,21 @@
             </section>
 
     </div>
-    
+   <!--- 
     <div id="service-popup" class="service-popup-fixed hidden">
         <div id="popup-content-title" class="text-2xl font-bold mb-3 text-gray-900 text-center"></div>
         <div id="popup-content-details" class="text-center"></div>
     </div>
-    
+  -->
+    <div id="service-popup" class="service-popup-fixed hidden">
+  <!-- Close Button -->
+  <button id="popup-close-btn"
+          class="absolute top-2 right-3 text-gray-700 hover:text-red-600 text-2xl font-bold leading-none focus:outline-none"
+          aria-label="Close Popup">&times;</button>
+
+  <div id="popup-content-title" class="text-2xl font-bold mb-3 text-gray-900 text-center"></div>
+  <div id="popup-content-details" class="text-center"></div>
+</div>  
   </div>
   
   <footer class="flex-shrink-0 bg-gray-800 text-white relative overflow-hidden h-12">
