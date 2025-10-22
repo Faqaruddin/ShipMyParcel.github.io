@@ -1,6 +1,6 @@
 // script.js
 
-// --- Email Content Logic ---
+// --- Email Content Logic for email ---
         function sendMail(event) {
   event.preventDefault();
 
