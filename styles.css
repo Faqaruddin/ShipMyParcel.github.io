@@ -17,6 +17,7 @@
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(5px);
 }
+/* 
 
 /* --- New Fixed Pop-up Styles (Dynamic Positioning/Tooltip) --- */
 .service-popup-fixed {
@@ -41,6 +42,28 @@
     /* Initial state ensures a clean start before JS positions it */
     top: -9999px; 
     left: -9999px; 
+}
+
+*/
+
+.service-popup-fixed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 450px;
+  padding: 2rem;
+  background-color: rgba(255, 255, 200, 0.97);
+  border: 4px solid #f59e0b;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  z-index: 100;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+}
+.service-popup-fixed.active {
+  opacity: 1;
 }
 
 /* State when the pop-up is active (controlled by JS) */
