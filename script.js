@@ -10,7 +10,7 @@
     name: document.getElementById("name").value,
     email: document.getElementById("email").value,
     service: document.getElementById("service").value,
-    whatapp: document.getElementById("whatapp").value,
+    whatapp: document.getElementById("contact_number").value,
   };
 
   emailjs.send("service_wy4z2as", "template_0z1c9br", parms)
@@ -64,7 +64,7 @@ function navigateTo(targetId) {
   const sections = document.querySelectorAll('.page-section');
   sections.forEach(section => {
     section.classList.add('hidden');
-    section.scrollTop = 0; // Reset scroll position for hidden content
+    //section.scrollTop = 0; // Reset scroll position for hidden content
   });
 
   // Remove 'active' class from all nav links
@@ -75,9 +75,17 @@ function navigateTo(targetId) {
   // Show the target section and set 'active' class on its link
   const targetSection = document.getElementById(targetId);
   const targetLink = document.getElementById(`nav-${targetId}`);
+  const pageContainer = document.querySelector('.page-container'); // Get the scrolling container
 
   if (targetSection) {
     targetSection.classList.remove('hidden');
+       // CRITICAL: Reset the scroll position of the main content container
+
+    if (pageContainer) {
+
+        pageContainer.scrollTop = 0;
+
+    }
   }
   if (targetLink) {
     targetLink.classList.add('active');
@@ -123,7 +131,7 @@ function showPopup(card) {
     popup.style.transform = 'translate(-50%, -50%)';
     
     // Restore body scroll 
-    document.body.style.overflow = ''; 
+    //document.body.style.overflow = ''; 
 
     // Activate the fade-in transition
     setTimeout(() => {
@@ -136,11 +144,11 @@ function hidePopup() {
     hideTimeout = setTimeout(() => {
         popup.classList.remove('active');
         // Hide completely after the fade-out transition completes (300ms defined in CSS)
-        setTimeout(() => {
+       /* setTimeout(() => {
              if (!popup.classList.contains('active')) {
                 popup.classList.add('hidden');
             }
-        }, 300); 
+        }, 300); */
     }, 50);
 }
 
@@ -204,11 +212,7 @@ if (popupCloseBtn) {
 
 // Scroll-to-top button visibility and behavior
 const scrollBtn = document.getElementById('scrollTopBtn');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 200) scrollBtn.classList.remove('hidden');
-  else scrollBtn.classList.add('hidden');
-});
-scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  scrollBtn.classList.add('hidden');
 
 // --- Rate Calculator Logic ---
 const couriers = [
