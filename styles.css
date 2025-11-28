@@ -1,3 +1,4 @@
+
 /* Define a custom, soft, light-yellow gradient for the dynamic effect */
 @keyframes subtleGradient {
   0% { background-position: 0% 50%; }
@@ -75,34 +76,31 @@
 
 /* --- Responsive Fullscreen & Scrollable Layout --- */
 html, body {
-  width: 100%;
-  height: 100%; 
+ width: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Outfit', sans-serif;
-  overflow: hidden; /* CRITICAL: Hides the main browser scrollbar */
+  overflow-x: hidden;      /* Only hide horizontal overflow */
+  overflow-y: auto; 
 }
 
 /* Let content grow naturally with screen height */
 .page-container {
-  /* flex-grow handles the vertical space, but we need to ensure scrolling works */
-  height: 100%; /* Important: Must take the full height provided by flex-grow */
-  min-height: 0; /* Important: Prevents content from forcing a minimum size */
-  overflow-y: auto; /* CRITICAL: This is the ONLY element that scrolls */
-  overflow-x: hidden;
-  padding-bottom: 0;
+ flex: 1;                /* Allows content to push footer down */
+  height: auto;
+  min-height: auto;
+  overflow: visible; 
+
 }
 
 /* Sections should size based on content, not force full height */
 .page-section {
-  width: 100%;
-  /* Force a minimum height to fill the entire visible .page-container for short pages (Home/Contact) */
-  min-height: 100%; 
-  /* Allow content to scroll *if* it exceeds min-height (e.g., Services section) */
-  overflow-y: visible; 
-  overflow-x: hidden;
+ width: 100%;
+  min-height: auto;        /* Let content decide the height */
   padding-top: 2rem;
   padding-bottom: 2rem;
+
+
 }
 
 /* Make images and grids responsive */
@@ -118,42 +116,28 @@ section {
 
 
 /* --- Truck Animation Styles --- */
-/* Truck Animation */
 @keyframes truck-slide {
-  0% { transform: translateX(100vw) translateY(-50%); }
-  100% { transform: translateX(-100vw) translateY(-50%); }
+  0% { transform: translateX(100vw) translateY(-50%); } /* Start off-screen right */
+  100% { transform: translateX(-100vw) translateY(-50%); } /* End off-screen left */
 }
 
 .animated-truck-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0; 
-  left: 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+  position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; pointer-events: none;
 }
 
 .animated-truck {
-  font-size: 1.4rem;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  animation: truck-slide 14s linear infinite;
-  white-space: nowrap;
-  color: #fcd34d;
-  text-shadow: 0 0 4px rgba(0,0,0,0.4);
+  font-size: 2.2rem; position: absolute; right: 0; top: 50%;
+  color: #fcd34d; text-shadow: 0 0 5px rgba(0,0,0,0.5); animation: truck-slide 15s linear infinite; white-space: nowrap;
 }
 
-/* Mobile footer optimization */
-@media (max-width: 640px) {
-  .footer {
-    height: 70px;
-    padding: 6px 0 !important;
-  }
+/* --- Custom Active Navigation Styles --- */
+/* Desktop Active Link: Yellow Border and Text */
+#main-nav .nav-link.active {
+    color: #d97706; /* yellow-600 */
+    border-bottom-width: 3px;
+    border-bottom-color: #d97706;
 }
+
 /* Mobile Active Link: Yellow Background */
 #mobile-menu a.nav-link.active {
     background-color: #fef3c7; /* yellow-100 */
@@ -161,11 +145,3 @@ section {
     color: #92400e; /* yellow-800 */
 }
 
-/* Footer */
-.footer {
-  flex-shrink: 0;
-  width: 100%;
-  border-top: 1px solid #444;
-  position: relative;
-  height: 60px;  /* Controlled height (perfect for truck + text) */
-}
