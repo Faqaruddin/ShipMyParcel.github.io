@@ -282,3 +282,61 @@ document.querySelectorAll(".service-card-minimized").forEach(card => {
 popupCloseBtn.addEventListener("click", () => popup.classList.remove("active"));
 
 */
+
+
+
+// --- Footer visibility: show footer only when page-container is scrolled to bottom --- //
+(function() {
+  function initFooterVisibility() {
+    const pageContainer = document.querySelector('.page-container');
+    const footer = document.getElementById('site-footer');
+    if (!pageContainer || !footer) return;
+
+    function checkFooter() {
+      // Use a small threshold to account for fractional pixels
+      const threshold = 4;
+      const atBottom = (pageContainer.scrollTop + pageContainer.clientHeight) >= (pageContainer.scrollHeight - threshold);
+      if (atBottom) {
+        footer.classList.add('visible');
+      } else {
+        footer.classList.remove('visible');
+      }
+
+      // optional: toggle scroll-to-top button visibility
+      const scrollBtn = document.getElementById('scrollTopBtn');
+      if (scrollBtn) {
+        if (pageContainer.scrollTop > 200) scrollBtn.classList.remove('hidden');
+        else scrollBtn.classList.add('hidden');
+      }
+    }
+
+    // Run on scroll
+    pageContainer.addEventListener('scroll', checkFooter, { passive: true });
+    // Run on resize (viewport change) and load to ensure correct state
+    window.addEventListener('resize', checkFooter);
+    window.addEventListener('load', checkFooter);
+    // Also when navigation changes showing new section
+    window.addEventListener('hashchange', () => {
+      // give a short delay to allow content to layout if necessary
+      setTimeout(checkFooter, 50);
+    });
+
+    // If scroll-to-top button is clicked, scroll the container to top
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    if (scrollBtn) {
+      scrollBtn.addEventListener('click', () => {
+        pageContainer.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Initial check
+    checkFooter();
+  }
+
+  // Initialize after DOM is ready (in case script is deferred)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFooterVisibility);
+  } else {
+    initFooterVisibility();
+  }
+})();
