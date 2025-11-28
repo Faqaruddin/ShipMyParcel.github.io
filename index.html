@@ -26,7 +26,9 @@
    })();
 </script>
 </head>
-<body class="dynamic-bg text-gray-800 flex flex-col min-h-screen h-screen overflow-hidden"">
+<body class="dynamic-bg text-gray-800 flex flex-col min-h-screen">
+
+
 
   <header class="flex-shrink-0 sticky top-0 z-10 bg-white/90 backdrop-blur-sm shadow-md rounded-b-xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
@@ -264,7 +266,7 @@
                 </svg>
                 <span class="text-lg font-medium">Visit us in-store: <a href="https://maps.app.goo.gl/npr748c88bFb474f6" target="_blank" class="text-yellow-600 hover:underline">View Map Location</a></span>
               </div>
-                 <div class="bg-white p-4 rounded-lg shadow-sm border border-yellow-200">
+               <div class="bg-white p-4 rounded-lg shadow-sm border border-yellow-200">
                 <p class="text-gray-800 font-semibold text-lg">Our Address:</p>
                 <p class="text-gray-700 mt-1 leading-relaxed">
                   Ship My Parcel <br>
@@ -372,20 +374,19 @@
   <div id="popup-content-title" class="text-2xl font-bold mb-3 text-gray-900 text-center"></div>
   <div id="popup-content-details" class="text-center"></div>
 </div>  
-  </div>
-  
-  <footer class="footer bg-gray-900 text-gray-300 py-4 mt-auto relative overflow-hidden">
-  
-  <!-- Truck Animation Layer -->
+ <!-- Truck Animation ABOVE Footer -->
+<div class="truck-strip relative w-full h-10 overflow-hidden">
   <div class="animated-truck-container pointer-events-none absolute inset-0">
     <span class="animated-truck">🚚 Ship My Parcel 🚚</span>
   </div>
+</div>
 
-  <!-- Footer Content -->
-  <div class="relative z-10 max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
+<!-- Actual Footer -->
+<footer class="footer bg-gray-900 text-gray-300 py-4 mt-auto">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
 
     <div class="text-xs md:text-sm leading-tight">
-      <strong>Ship My Parcel</strong> — 12218 Riverside Drive, Windsor, Ontario, Canada – N8N 1A2  
+      <strong>Email Info :  </strong> Ship My Parcel, 12218 Riverside Drive, Windsor, Ontario, Canada – N8N 1A2  
       <br class="md:hidden">
       Phone: <a href="tel:12266910101" class="text-yellow-400 hover:underline">226-691-0101</a>
     </div>
@@ -396,6 +397,13 @@
 
   </div>
 </footer>
+
+
+</div>
+  
+
+
+
 
 
 <button id="scrollTopBtn" 
