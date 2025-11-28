@@ -374,22 +374,29 @@
 </div>  
   </div>
   
+  <footer class="footer bg-gray-900 text-gray-300 py-4 mt-auto relative overflow-hidden">
   
-  <footer id="site-footer" class="site-footer fixed left-0 right-0 bottom-0 bg-gray-800 text-white py-3 transform translate-y-full transition-transform z-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-      <div class="flex items-center space-x-3">
-        <span class="animated-truck">🚚_Ship My Parcel_🚚</span>
-      </div>
-      <div class="flex-1 text-center overflow-x-auto">
-        <h6 class="footer-info text-sm font-semibold text-white whitespace-nowrap">
-          Email Info : Ship My Parcel, 12218 Riverside Drive, Windsor, Ontario, Canada – N8N 1A2 12266910101
-        </h6>
-      </div>
-      <div class="text-right text-gray-300 text-xs">
-        © 2025 Ship My Parcel. All rights reserved.
-      </div>
+  <!-- Truck Animation Layer -->
+  <div class="animated-truck-container pointer-events-none absolute inset-0">
+    <span class="animated-truck">🚚 Ship My Parcel 🚚</span>
+  </div>
+
+  <!-- Footer Content -->
+  <div class="relative z-10 max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
+
+    <div class="text-xs md:text-sm leading-tight">
+      <strong>Ship My Parcel</strong> — 12218 Riverside Drive, Windsor, Ontario, Canada – N8N 1A2  
+      <br class="md:hidden">
+      Phone: <a href="tel:12266910101" class="text-yellow-400 hover:underline">226-691-0101</a>
     </div>
-  </footer>
+
+    <div class="text-xs md:text-sm leading-tight">
+      © 2025 Ship My Parcel — All Rights Reserved
+    </div>
+
+  </div>
+</footer>
+
 
 <button id="scrollTopBtn" 
   class="fixed bottom-6 right-6 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-3 rounded-full shadow-lg hidden z-50">
