@@ -87,18 +87,18 @@ html, body {
 /* Let content grow naturally with screen height */
 .page-container {
  flex: 1;                /* Allows content to push footer down */
-  height: auto;
-  min-height: auto;
-  overflow: visible; 
+ min-height: auto;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 
 }
 
 /* Sections should size based on content, not force full height */
 .page-section {
- width: 100%;
-  min-height: auto;        /* Let content decide the height */
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  flex: 1;
+  height: auto;
+  min-height: auto;
+  overflow: visible;
 
 
 }
