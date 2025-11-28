@@ -1,3 +1,4 @@
+
 // script.js
 
 // --- Email Content Logic for email ---
