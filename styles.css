@@ -1,5 +1,3 @@
-/* --- existing styles preserved with additions for footer behavior --- */
-
 /* Define a custom, soft, light-yellow gradient for the dynamic effect */
 @keyframes subtleGradient {
   0% { background-position: 0% 50%; }
@@ -19,8 +17,61 @@
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(5px);
 }
+/* 
 
-/* --- Popup styles omitted --- */
+/* --- New Fixed Pop-up Styles (Dynamic Positioning/Tooltip) --- */
+.service-popup-fixed {
+    /* Fixed position relative to the viewport, allowing JS to set coordinates */
+    position: fixed;
+    /* TOP, LEFT, and TRANSFORM are set by JS to center on the hovered card */
+    
+    /* Styling */
+    width: 90%;
+    max-width: 450px; 
+    padding: 2rem;
+    background-color: rgba(255, 255, 200, 0.95); /* Light yellow, near-opaque */
+    border: 4px solid #f59e0b; /* Yellow border */
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 50; /* High z-index to float over everything */
+
+    /* Animation */
+    /* Ensures the position and fade transition smoothly */
+    transition: opacity 0.3s ease, transform 0.3s ease, top 0.3s ease, left 0.3s ease;
+    opacity: 0;
+    /* Initial state ensures a clean start before JS positions it */
+    top: -9999px; 
+    left: -9999px; 
+}
+
+*/
+
+.service-popup-fixed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 450px;
+  padding: 2rem;
+  background-color: rgba(255, 255, 200, 0.97);
+  border: 4px solid #f59e0b;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  z-index: 100;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+}
+.service-popup-fixed.active {
+  opacity: 1;
+}
+
+/* State when the pop-up is active (controlled by JS) */
+.service-popup-fixed.active {
+    opacity: 1;
+}
+
+
 
 /* --- Responsive Fullscreen & Scrollable Layout --- */
 html, body {
@@ -29,85 +80,92 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Outfit', sans-serif;
-  overflow: hidden; /* We keep body non-scrolling; main container scrolls */
+  overflow: hidden; /* CRITICAL: Hides the main browser scrollbar */
 }
 
 /* Let content grow naturally with screen height */
 .page-container {
-  height: 100%;
-  min-height: 0;
-  overflow-y: auto;
+  /* flex-grow handles the vertical space, but we need to ensure scrolling works */
+  height: 100%; /* Important: Must take the full height provided by flex-grow */
+  min-height: 0; /* Important: Prevents content from forcing a minimum size */
+  overflow-y: auto; /* CRITICAL: This is the ONLY element that scrolls */
   overflow-x: hidden;
-  /* Reserve space for footer so content at bottom isn't hidden when footer appears */
-  padding-bottom: 4.25rem; /* matches footer height + gap */
+  padding-bottom: 0;
 }
 
 /* Sections should size based on content, not force full height */
 .page-section {
   width: 100%;
-  min-height: 100%;
+  /* Force a minimum height to fill the entire visible .page-container for short pages (Home/Contact) */
+  min-height: 100%; 
+  /* Allow content to scroll *if* it exceeds min-height (e.g., Services section) */
   overflow-y: visible; 
   overflow-x: hidden;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
-/* Footer appearance control */
-/* Initially hidden by translating it fully down. When .visible is added, it slides up. */
-.site-footer {
-  --footer-height: 3.5rem;
-  height: var(--footer-height);
-  transform: translateY(100%);
-  transition: transform 260ms ease;
-  will-change: transform;
+/* Make images and grids responsive */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent large sections from overflowing horizontally */
+section {
+  overflow-x: hidden;
+}
+
+
+/* --- Truck Animation Styles --- */
+/* Truck Animation */
+@keyframes truck-slide {
+  0% { transform: translateX(100vw) translateY(-50%); }
+  100% { transform: translateX(-100vw) translateY(-50%); }
+}
+
+.animated-truck-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; 
+  left: 0;
+  overflow: hidden;
   display: flex;
   align-items: center;
 }
 
-/* When visible we reset translate */
-.site-footer.visible {
-  transform: translateY(0%);
-}
-
-/* Ensure the footer content keeps the long address on a single line */
-.footer-info {
-  white-space: nowrap; /* force single line */
-  overflow-x: auto;    /* allow horizontal scroll if too long on tiny screens */
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Small tweak to animated truck inside footer */
 .animated-truck {
-  font-size: 0.9rem;
-  margin-right: 0.5rem;
+  font-size: 1.4rem;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: truck-slide 14s linear infinite;
+  white-space: nowrap;
+  color: #fcd34d;
+  text-shadow: 0 0 4px rgba(0,0,0,0.4);
 }
 
-/* Keep previous rules for pop-up and other layout (truncated for brevity) */
-
-/* Truck animation (kept from original file) */
-@keyframes truck-slide {
-  0% { transform: translateX(100vw) translateY(-50%); } /* Start off-screen right */
-  100% { transform: translateX(-100vw) translateY(-50%); } /* End off-screen left */
+/* Mobile footer optimization */
+@media (max-width: 640px) {
+  .footer {
+    height: 70px;
+    padding: 6px 0 !important;
+  }
 }
-
-.animated-truck-container {
-  position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; pointer-events: none;
-}
-
-.animated-truck {
-  font-size: 2.2rem; position: absolute; right: 0; top: 50%;
-  color: #fcd34d; text-shadow: 0 0 5px rgba(0,0,0,0.5); animation: truck-slide 15s linear infinite; white-space: nowrap;
-}
-
-/* Preserve nav active styles */
-#main-nav .nav-link.active {
-    color: #d97706;
-    border-bottom-width: 3px;
-    border-bottom-color: #d97706;
-}
+/* Mobile Active Link: Yellow Background */
 #mobile-menu a.nav-link.active {
-    background-color: #fef3c7;
+    background-color: #fef3c7; /* yellow-100 */
     font-weight: 600;
-    color: #92400e;
+    color: #92400e; /* yellow-800 */
 }
 
+/* Footer */
+.footer {
+  flex-shrink: 0;
+  width: 100%;
+  border-top: 1px solid #444;
+  position: relative;
+  height: 60px;  /* Controlled height (perfect for truck + text) */
+}
